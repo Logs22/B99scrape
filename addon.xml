@@ -1,4 +1,4 @@
-<addon id="script.module.ezscrapers" name="Ezra Scrapers Module" version="0.0.1" provider-name="">
+<addon id="script.module.B99scrapers" name="B99 Scrapers Module" version="0.0.1" provider-name="">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
 		<import addon="script.module.requests" />
@@ -11,7 +11,7 @@
 	<extension point="xbmc.python.module" library="lib" /> <!-- Must be placed after xbmc.python.pluginsource, otherwise the addon does not show in the repository. -->
 	<extension point="xbmc.addon.metadata">
 		<reuselanguageinvoker>false</reuselanguageinvoker>
-		<summary lang="en">Ezra Scrapers Module</summary>
+		<summary lang="en">B99 Scrapers Module</summary>
 		<description>Scrape common video host for URL's to be playable in Kodi, simplifying addon development of video plugins requiring multi video hosts.</description>
 		<platform>all</platform>
 		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
