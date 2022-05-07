@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
 from json import dumps as jsdumps, loads as jsloads
@@ -15,7 +15,7 @@ def getKodiVersion():
 	return int(xbmc.getInfoLabel("System.BuildVersion")[:2])
 
 addon = xbmcaddon.Addon
-addonObject = addon('script.module.ezscrapers')
+addonObject = addon('script.module.B99scrapers')
 addonInfo = addonObject.getAddonInfo
 getLangString = addonObject.getLocalizedString
 condVisibility = xbmc.getCondVisibility
@@ -43,7 +43,7 @@ settingsFile = joinPath(dataPath, 'settings.xml')
 
 
 def setting(id, fallback=None):
-	try: settings_dict = jsloads(homeWindow.getProperty('fenomscrapers_settings'))
+	try: settings_dict = jsloads(homeWindow.getProperty('B99scrapers_settings'))
 	except: settings_dict = make_settings_dict()
 	if settings_dict is None: settings_dict = settings_fallback(id)
 	value = settings_dict.get(id, '')
@@ -68,15 +68,15 @@ def make_settings_dict(): # service runs upon a setting change
 			if setting_value is None: setting_value = ''
 			dict_item = {setting_id: setting_value}
 			settings_dict.update(dict_item)
-		homeWindow.setProperty('fenomscrapers_settings', jsdumps(settings_dict))
+		homeWindow.setProperty('B99scrapers_settings', jsdumps(settings_dict))
 		return settings_dict
 	except:
 		return None
 
-def refresh_debugReversed(): # called from service "onSettingsChanged" to clear fenomscrapers.log if setting to reverse has been changed
-	if homeWindow.getProperty('fenomscrapers.debug.reversed') != setting('debug.reversed'):
-		homeWindow.setProperty('fenomscrapers.debug.reversed', setting('debug.reversed'))
-		execute('RunPlugin(plugin://script.module.ezscrapers/?action=tools_clearLogFile)')
+def refresh_debugReversed(): # called from service "onSettingsChanged" to clear B99scrapers.log if setting to reverse has been changed
+	if homeWindow.getProperty('B99scrapers.debug.reversed') != setting('debug.reversed'):
+		homeWindow.setProperty('B99scrapers.debug.reversed', setting('debug.reversed'))
+		execute('RunPlugin(plugin://script.module.B99scrapers/?action=tools_clearLogFile)')
 
 def lang(language_id):
 	return getLangString(language_id)
@@ -94,20 +94,20 @@ def isVersionUpdate():
 			f.close()
 	except:
 		LOGINFO = 1 # (LOGNOTICE(2) deprecated in 19, use LOGINFO(1))
-		xbmc.log('FenomScrapers Addon Data Path Does not Exist. Creating Folder....', LOGINFO)
-		addon_folder = transPath('special://profile/addon_data/script.module.ezscrapers')
+		xbmc.log('B99Scrapers Addon Data Path Does not Exist. Creating Folder....', LOGINFO)
+		addon_folder = transPath('special://profile/addon_data/script.module.B99scrapers')
 		xbmcvfs.mkdirs(addon_folder)
 	try:
 		with open(versionFile, 'r') as fh: oldVersion = fh.read()
 	except: oldVersion = '0'
 	try:
-		curVersion = addon('script.module.ezscrapers').getAddonInfo('version')
+		curVersion = addon('script.module.B99scrapers').getAddonInfo('version')
 		if oldVersion != curVersion:
 			with open(versionFile, 'w') as fh: fh.write(curVersion)
 			return True
 		else: return False
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return False
 
@@ -123,7 +123,7 @@ def clean_settings():
 			else: removed_settings.append(item)
 		content += '\n</settings>'
 		return content
-	addon_id = 'script.module.ezscrapers'
+	addon_id = 'script.module.B99scrapers'
 	try:
 		removed_settings = []
 		active_settings = []
@@ -158,7 +158,7 @@ def clean_settings():
 		sleep(200)
 		notification(title=addon_name, message=lang(32042).format(str(len(removed_settings))))
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		notification(title=addon_name, message=32043)
 

@@ -2,10 +2,10 @@
 
 import os
 from pkgutil import walk_packages
-from fenomscrapers.modules.control import setting as getSetting
+from B99scrapers.modules.control import setting as getSetting
 
 debug = getSetting('debug.enabled') == 'true'
-sourceFolder = 'sources_fenomscrapers'
+sourceFolder = 'sources_B99scrapers'
 
 def sources(specified_folders=None, ret_all=False):
 	try:
@@ -23,11 +23,11 @@ def sources(specified_folders=None, ret_all=False):
 						append((module_name, module.source))
 					except Exception as e:
 						if debug:
-							from fenomscrapers.modules import log_utils
+							from B99scrapers.modules import log_utils
 							log_utils.log('Error: Loading module: "%s": %s' % (module_name, e), level=log_utils.LOGWARNING)
 		return sourceDict
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return []
 
@@ -36,6 +36,6 @@ def enabledCheck(module_name):
 		if getSetting('provider.' + module_name) == 'true': return True
 		else: return False
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return True
