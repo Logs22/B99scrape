@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
 import re
 from string import printable
-from fenomscrapers.modules import cleantitle
-from fenomscrapers.modules.undesirables import Undesirables
-from fenomscrapers.modules.control import homeWindow, setting as getSetting, setSetting
+from B99scrapers.modules import cleantitle
+from B99scrapers.modules.undesirables import Undesirables
+from B99scrapers.modules.control import homeWindow, setting as getSetting, setSetting
 
 
 RES_4K = ('2160', '216o', '.4k', 'ultrahd', 'ultra.hd', '.uhd.')
@@ -113,7 +113,7 @@ def get_release_quality(release_info, release_link=None):
 			else: quality = 'SD'
 		return quality, info
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return 'SD', []
 
@@ -124,7 +124,7 @@ def aliases_to_array(aliases, filter=None):
 		if isinstance(filter, str): filter = [filter]
 		return [x.get('title') for x in aliases if not filter or x.get('country') in filter]
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return []
 
@@ -145,7 +145,7 @@ def check_title(title, aliases, release_title, hdlr, year, years=None): # non pa
 				if alias in title_list: continue
 				title_list_append(alias)
 			except:
-				from fenomscrapers.modules import log_utils
+				from B99scrapers.modules import log_utils
 				log_utils.error()
 	try:
 		title = title.replace('&', 'and')
@@ -170,7 +170,7 @@ def check_title(title, aliases, release_title, hdlr, year, years=None): # non pa
 				if bool(re.search(regex, release_title, re.I)): return False
 		return True
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return False
 
@@ -185,7 +185,7 @@ def remove_lang(release_info, check_foreign_audio):
 		if release_info.endswith('.srt.') and not any(value in release_info for value in SRT_CHECK): return True
 		return False
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return False
 
@@ -203,7 +203,7 @@ def filter_season_pack(show_title, aliases, year, season, release_title):
 				if alias in title_list: continue
 				title_list_append(alias)
 			except:
-				from fenomscrapers.modules import log_utils
+				from B99scrapers.modules import log_utils
 				log_utils.error()
 	try:
 		show_title = show_title.replace('!', '').replace('(', '').replace(')', '').replace('&', 'and')
@@ -243,7 +243,7 @@ def filter_season_pack(show_title, aliases, year, season, release_title):
 		for regex in range_regex:
 			match = re.search(regex, release_title)
 			if match:
-				# from fenomscrapers.modules import log_utils
+				# from B99scrapers.modules import log_utils
 				# log_utils.log('pack episode range found -- > release_title=%s' % release_title)
 				episode_start = int(match.group(1))
 				episode_end = int(match.group(2))
@@ -269,7 +269,7 @@ def filter_season_pack(show_title, aliases, year, season, release_title):
 			return True, 0, 0
 		return False, 0, 0
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return True
 
@@ -284,7 +284,7 @@ def filter_show_pack(show_title, aliases, imdb, year, season, release_title, tot
 				if alias in title_list: continue
 				title_list_append(alias)
 			except:
-				from fenomscrapers.modules import log_utils
+				from B99scrapers.modules import log_utils
 				log_utils.error()
 	try:
 		show_title = show_title.replace('!', '').replace('(', '').replace(')', '').replace('&', 'and')
@@ -509,7 +509,7 @@ def filter_show_pack(show_title, aliases, imdb, year, season, release_title, tot
 
 		return True, total_seasons
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		# return True, total_seasons
 
@@ -537,7 +537,7 @@ def info_from_name(release_title, title, year, hdlr=None, episode_title=None, se
 		name_info = '.%s.' % name_info
 		return name_info
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return release_title
 
@@ -547,7 +547,7 @@ def release_title_format(release_title):
 		fmt = '.%s.' % re.sub(r'[^a-z0-9-~]+', '.', release_title).replace('.-.', '-').replace('-.', '-').replace('.-', '-').replace('--', '-')
 		return fmt
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return release_title
 
@@ -565,7 +565,7 @@ def clean_name(release_title):
 		release_title = release_title.lstrip('.-[](){}:/')
 		return release_title
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return release_title
 
@@ -574,7 +574,7 @@ def strip_non_ascii_and_unprintable(text):
 		result = ''.join(char for char in text if char in printable)
 		return result.encode('ascii', errors='ignore').decode('ascii', errors='ignore')
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return text
 
@@ -590,7 +590,7 @@ def _size(siz):
 		str_size = '%.2f GB' % float_size
 		return float_size, str_size
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error('failed on siz=%s' % siz)
 		return 0, ''
 
@@ -606,20 +606,20 @@ def convert_size(size_bytes, to='GB'):
 		str_size = "%s %s" % (float_size, to)
 		return float_size, str_size
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return 0, ''
 
 def base32_to_hex(hash, caller):
 	from base64 import b32decode
-	from fenomscrapers.modules import log_utils
+	from B99scrapers.modules import log_utils
 	hex = b32decode(hash).hex()
 	log_utils.log('%s: base32 hash  "%s"  converted to hex 40  "%s" ' % (caller, hash, hex), __name__, log_utils.LOGDEBUG)
 	return hex
 
 def scraper_error(provider):
 	import traceback
-	from fenomscrapers.modules import log_utils
+	from B99scrapers.modules import log_utils
 	failure = traceback.format_exc()
 	log_utils.log(provider.upper() + ' - Exception: \n' + str(failure), caller='scraper_error', level=log_utils.LOGERROR)
 
@@ -634,7 +634,7 @@ def is_host_valid(url, domains):
 		if hosts and any([h for h in ('akamaized', 'ocloud') if h in host]): host = 'CDN'
 		return any(hosts), host
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return False, ''
 
@@ -650,7 +650,7 @@ def __top_domain(url):
 		domain = domain.lower()
 		return domain
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 
 def copy2clip(txt):
@@ -663,7 +663,7 @@ def copy2clip(txt):
 			cmd = "echo " + txt.replace('&', '^&').strip() + "|clip" # "&" is a command seperator
 			return check_call(cmd, shell=True)
 		except:
-			from fenomscrapers.modules import log_utils
+			from B99scrapers.modules import log_utils
 			log_utils.error('Windows: Failure to copy to clipboard')
 	elif platform == "darwin":
 		try:
@@ -671,7 +671,7 @@ def copy2clip(txt):
 			cmd = "echo " + txt.strip() + "|pbcopy"
 			return check_call(cmd, shell=True)
 		except:
-			from fenomscrapers.modules import log_utils
+			from B99scrapers.modules import log_utils
 			log_utils.error('Mac: Failure to copy to clipboard')
 	elif platform == "linux":
 		try:
@@ -679,5 +679,5 @@ def copy2clip(txt):
 			p = Popen(["xsel", "-pi"], stdin=PIPE)
 			p.communicate(input=txt)
 		except:
-			from fenomscrapers.modules import log_utils
+			from B99scrapers.modules import log_utils
 			log_utils.error('Linux: Failure to copy to clipboard')
