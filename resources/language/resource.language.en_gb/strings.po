@@ -1,5 +1,5 @@
  # Kodi Media Center language file
-# Addon Name: FenomScrapers
+# Addon Name: B99Scrapers
 # Addon id: script.module.ezscrapers
 # Addon Provider: Mr-Kodi
 # Translator English: Mr-Kodi
@@ -28,7 +28,7 @@ msgid "Choose Module Scraper"
 msgstr ""
 
 msgctxt "#32006"
-msgid "Fenomscrapers Default Providers"
+msgid "B99scrapers Default Providers"
 msgstr ""
 
 msgctxt "#32007"
@@ -152,7 +152,7 @@ msgid "Addon Log"
 msgstr ""
 
 msgctxt "#32037"
-msgid "A new verison of Fenomscrapers is available from the repository. Please consider updating to v%s"
+msgid "A new verison of B99scrapers is available from the repository. Please consider updating to v%s"
 msgstr ""
 
 msgctxt "#32038"
@@ -224,23 +224,23 @@ msgid "Debug"
 msgstr ""
 
 msgctxt "#32055"
-msgid "Write FenomScrapers log in reverse order"
+msgid "Write B99Scrapers log in reverse order"
 msgstr ""
 
 msgctxt "#32056"
-msgid "Clear FenomScrapers log file"
+msgid "Clear B99Scrapers log file"
 msgstr ""
 
 msgctxt "#32057"
-msgid "View FenomScrapers log file"
+msgid "View B99Scrapers log file"
 msgstr ""
 
 msgctxt "#32058"
-msgid "Upload FenomScrapers log file to pastebin"
+msgid "Upload B99Scrapers log file to pastebin"
 msgstr ""
 
 msgctxt "#32059"
-msgid "FenomScrapers log file uploaded to:"
+msgid "B99Scrapers log file uploaded to:"
 msgstr ""
 
 msgctxt "#32060"

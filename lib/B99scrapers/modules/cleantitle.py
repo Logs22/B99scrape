@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
 import re
@@ -15,7 +15,7 @@ def get(title):
 		title = re.sub(r'([<\[({].*?[})\]>])|([^\w0-9])', '', title)
 		return title
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return title
 
@@ -30,7 +30,7 @@ def get_simple(title):
 		title = re.sub(r'<.*?>', '', title) # removes tags
 		return title
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return title
 
@@ -46,7 +46,7 @@ def geturl(title):
 		title = title.replace('/', '-').replace(' ', '-').replace('--', '-').replace('–', '-').replace('!', '')
 		return title
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return title
 
@@ -56,6 +56,6 @@ def normalize(title):
 		title = ''.join(c for c in unicodedata.normalize('NFKD', title) if unicodedata.category(c) != 'Mn')
 		return str(title)
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return title

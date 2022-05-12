@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-# modified by Venom for Fenomscrapers (updated 12-20-2021)
+# modified by Venom for B99scrapers (updated 12-20-2021)
 """
-	Fenomscrapers Project
+	B99scrapers Project
 """
 
 import re
 from urllib.parse import quote, unquote_plus
-from fenomscrapers.modules import client
-from fenomscrapers.modules import source_utils
-from fenomscrapers.modules import workers
+from B99scrapers.modules import client
+from B99scrapers.modules import source_utils
+from B99scrapers.modules import workers
 
 
 class source:

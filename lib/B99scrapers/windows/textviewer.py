@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
-from fenomscrapers.windows.base import BaseDialog
+from B99scrapers.windows.base import BaseDialog
 
 class TextViewerXML(BaseDialog):
 	def __init__(self, *args, **kwargs):
@@ -25,5 +25,5 @@ class TextViewerXML(BaseDialog):
 			self.close()
 
 	def set_properties(self):
-		self.setProperty('fenomscrapers.text', self.text)
-		self.setProperty('fenomscrapers.heading', self.heading)
+		self.setProperty('B99scrapers.text', self.text)
+		self.setProperty('B99scrapers.heading', self.heading)

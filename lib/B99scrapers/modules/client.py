@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
 import gzip
@@ -8,8 +8,8 @@ from random import choice, randrange
 import re
 from sys import version_info
 from time import sleep
-from fenomscrapers.modules import cache
-from fenomscrapers.modules import dom_parser
+from B99scrapers.modules import cache
+from B99scrapers.modules import dom_parser
 from http import cookiejar
 from html import unescape
 from io import BytesIO
@@ -50,7 +50,7 @@ def request(url, close=True, redirect=True, error=False, proxy=None, post=None, 
 				opener = urllib2.build_opener(*handlers)
 				urllib2.install_opener(opener)
 			except:
-				from fenomscrapers.modules import log_utils
+				from B99scrapers.modules import log_utils
 				log_utils.error()
 
 		if verifySsl and ((2, 7, 8) < version_info < (2, 7, 12)):
@@ -68,7 +68,7 @@ def request(url, close=True, redirect=True, error=False, proxy=None, post=None, 
 				opener = urllib2.build_opener(*handlers)
 				urllib2.install_opener(opener)
 			except:
-				from fenomscrapers.modules import log_utils
+				from B99scrapers.modules import log_utils
 				log_utils.error()
 
 		try: headers.update(headers)
@@ -120,10 +120,10 @@ def request(url, close=True, redirect=True, error=False, proxy=None, post=None, 
 					if encoding == 'gzip': cf_result = gzip.GzipFile(fileobj=BytesIO(cf_result)).read()
 
 					if flare and 'cloudflare' in str(response.info()).lower():
-						from fenomscrapers.modules import log_utils
+						from B99scrapers.modules import log_utils
 						log_utils.log('client module calling cfscrape: url=%s' % url, level=log_utils.LOGDEBUG)
 						try:
-							from fenomscrapers.modules import cfscrape
+							from B99scrapers.modules import cfscrape
 							if isinstance(post, dict): data = post
 							else:
 								try: data = parse_qs(post)
@@ -151,18 +151,18 @@ def request(url, close=True, redirect=True, error=False, proxy=None, post=None, 
 						response = urllib2.urlopen(req, timeout=int(timeout))
 					else:
 						if error is False:
-							from fenomscrapers.modules import log_utils
+							from B99scrapers.modules import log_utils
 							log_utils.error('Request-Error url=(%s)' % url)
 							return None
 				else:
 					if error is False:
-						from fenomscrapers.modules import log_utils
+						from B99scrapers.modules import log_utils
 						log_utils.error('Request-Error url=(%s)' % url)
 						return None
 					elif error is True and response.code in (401, 404, 405): # no point in continuing after this exception runs with these response.code's
 						try: response_headers = dict([(item[0].title(), item[1]) for item in list(response.info().items())]) # behaves differently 18 to 19. 18 I had 3 "Set-Cookie:" it combined all 3 values into 1 key. In 19 only the last keys value was present.
 						except:
-							from fenomscrapers.modules import log_utils
+							from B99scrapers.modules import log_utils
 							log_utils.error()
 							response_headers = response.headers
 						return (str(response), str(response.code), response_headers)
@@ -231,7 +231,7 @@ def request(url, close=True, redirect=True, error=False, proxy=None, post=None, 
 			try:
 				response_headers = dict([(item[0].title(), item[1]) for item in list(response.info().items())]) # behaves differently 18 to 19. 18 I had 3 "Set-Cookie:" it combined all 3 values into 1 key. In 19 only the last keys value was present.
 			except:
-				from fenomscrapers.modules import log_utils
+				from B99scrapers.modules import log_utils
 				log_utils.error()
 				response_headers = response.headers
 			try: response_code = str(response.code)
@@ -246,7 +246,7 @@ def request(url, close=True, redirect=True, error=False, proxy=None, post=None, 
 			if close is True: response.close()
 			return result
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error('Request-Error url=(%s)' % url)
 		return None
 
@@ -259,7 +259,7 @@ def _basic_request(url, headers=None, post=None, method='GET', timeout='30', lim
 		response = urllib2.urlopen(req, timeout=int(timeout))
 		return _get_result(response, limit, ret_code)
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 
 def _add_request_header(_request, headers):
@@ -273,7 +273,7 @@ def _add_request_header(_request, headers):
 		for key in headers:
 			_request.add_header(key, headers[key])
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 
 def _get_result(response, limit=None, ret_code=None):
@@ -287,7 +287,7 @@ def _get_result(response, limit=None, ret_code=None):
 		if encoding == 'gzip': result = gzip.GzipFile(fileobj=BytesIO(result)).read()
 		return result
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 
 def parseDOM(html, name='', attrs=None, ret=False):
@@ -299,7 +299,7 @@ def parseDOM(html, name='', attrs=None, ret=False):
 		else: results = [result.content for result in results]
 		return results
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 
 def replaceHTMLCodes(txt):
@@ -324,7 +324,7 @@ def _replaceHTMLCodes(txt):
 		txt = txt.strip()
 		return txt
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return txt
 
@@ -410,7 +410,7 @@ class cfcookie:
 			cookie = '; '.join(['%s=%s' % (i.name, i.value) for i in cookies])
 			if 'cf_clearance' in cookie: self.cookie = cookie
 		except:
-			from fenomscrapers.modules import log_utils
+			from B99scrapers.modules import log_utils
 			log_utils.error()
 
 	def parseJSString(self, s):
@@ -419,7 +419,7 @@ class cfcookie:
 			val = int(eval(s.replace('!+[]', '1').replace('!![]', '1').replace('[]', '0').replace('(', 'str(')[offset:]))
 			return val
 		except:
-			from fenomscrapers.modules import log_utils
+			from B99scrapers.modules import log_utils
 			log_utils.error()
 
 
@@ -442,7 +442,7 @@ class bfcookie:
 			result = _basic_request(url, headers=headers, timeout=timeout)
 			return self.getCookieString(result, headers['Cookie'])
 		except:
-			from fenomscrapers.modules import log_utils
+			from B99scrapers.modules import log_utils
 			log_utils.error()
 
 	# not very robust but lazieness...
@@ -488,5 +488,5 @@ class sucuri:
 			self.cookie = '%s=%s' % (self.cookie[0], self.cookie[1])
 			return self.cookie
 		except:
-			from fenomscrapers.modules import log_utils
+			from B99scrapers.modules import log_utils
 			log_utils.error()

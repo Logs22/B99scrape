@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
 from datetime import datetime
 import inspect
-from fenomscrapers.modules.control import transPath, setting as getSetting, lang, joinPath, existsPath
+from B99scrapers.modules.control import transPath, setting as getSetting, lang, joinPath, existsPath
 
 LOGDEBUG = 0
 LOGINFO = 1
@@ -15,7 +15,7 @@ LOGFATAL = 4
 LOGNONE = 5 # not used
 
 debug_list = ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'FATAL']
-DEBUGPREFIX = '[COLOR red][ FENOMSCRAPERS %s ][/COLOR]'
+DEBUGPREFIX = '[COLOR red][ B99SCRAPERS %s ][/COLOR]'
 LOGPATH = transPath('special://logpath/')
 
 
@@ -41,7 +41,7 @@ def log(msg, caller=None, level=LOGINFO):
 			msg = 'From func name: %s.%s() Line # :%s\n                       msg : %s' % (caller[0], caller[1], caller[2], msg)
 
 		if debug_location == '1':
-			log_file = joinPath(LOGPATH, 'fenomscrapers.log')
+			log_file = joinPath(LOGPATH, 'B99scrapers.log')
 			if not existsPath(log_file):
 				f = open(log_file, 'w')
 				f.close()
@@ -64,7 +64,7 @@ def log(msg, caller=None, level=LOGINFO):
 		import traceback
 		traceback.print_exc()
 		import xbmc
-		xbmc.log('[ script.module.fenomonscrapers ] log_utils.log() Logging Failure: %s' % (e), LOGERROR)
+		xbmc.log('[ script.module.B99onscrapers ] log_utils.log() Logging Failure: %s' % (e), LOGERROR)
 
 def error(message=None, exception=True):
 	try:
@@ -89,14 +89,14 @@ def error(message=None, exception=True):
 		log(msg=message, caller=caller, level=LOGERROR)
 	except Exception as e:
 		import xbmc
-		xbmc.log('[ script.module.fenomonscrapers ] log_utils.error() Logging Failure: %s' % (e), LOGERROR)
+		xbmc.log('[ script.module.B99onscrapers ] log_utils.error() Logging Failure: %s' % (e), LOGERROR)
 
 def clear_logFile():
 	cleared = False
 	try:
-		from fenomscrapers.modules.control import yesnoDialog
+		from B99scrapers.modules.control import yesnoDialog
 		if not yesnoDialog(lang(32060), '', ''): return 'canceled'
-		log_file = joinPath(LOGPATH, 'fenomscrapers.log')
+		log_file = joinPath(LOGPATH, 'B99scrapers.log')
 		if not existsPath(log_file):
 			f = open(log_file, 'w')
 			return f.close()
@@ -106,17 +106,17 @@ def clear_logFile():
 		cleared = True
 	except Exception as e:
 		import xbmc
-		xbmc.log('[ script.module.fenomonscrapers ] log_utils.clear_logFile() Failure: %s' % (e), LOGERROR)
+		xbmc.log('[ script.module.B99onscrapers ] log_utils.clear_logFile() Failure: %s' % (e), LOGERROR)
 		cleared = False
 	return cleared
 
 def view_LogFile(name):
 	try:
-		from fenomscrapers.windows.textviewer import TextViewerXML
-		from fenomscrapers.modules.control import addonPath
+		from B99scrapers.windows.textviewer import TextViewerXML
+		from B99scrapers.modules.control import addonPath
 		log_file = joinPath(LOGPATH, '%s.log' % name.lower())
 		if not existsPath(log_file):
-			from fenomscrapers.modules.control import notification
+			from B99scrapers.modules.control import notification
 			return notification(message='Log File not found, likely logging is not enabled.')
 		f = open(log_file, 'r', encoding='utf-8', errors='ignore')
 		text = f.read()
@@ -129,23 +129,23 @@ def view_LogFile(name):
 		error()
 
 def upload_LogFile():
-	from fenomscrapers.modules.control import notification
+	from B99scrapers.modules.control import notification
 	url = 'https://paste.kodi.tv/'
-	log_file = joinPath(LOGPATH, 'fenomscrapers.log')
+	log_file = joinPath(LOGPATH, 'B99scrapers.log')
 	if not existsPath(log_file):
 		return notification(message='Log File not found, likely logging is not enabled.')
 	try:
 		import requests
-		from fenomscrapers.modules.control import addonVersion, selectDialog
+		from B99scrapers.modules.control import addonVersion, selectDialog
 		f = open(log_file, 'r', encoding='utf-8', errors='ignore')
 		text = f.read()
 		f.close()
-		UserAgent = 'FenomScrpaers %s' % addonVersion()
+		UserAgent = 'B99Scrpaers %s' % addonVersion()
 		response = requests.post(url + 'documents', data=text.encode('utf-8', errors='ignore'), headers={'User-Agent': UserAgent})
 		# log('log_response: ' + str(response))
 		if 'key' in response.json():
 			result = url + response.json()['key']
-			log('FenomScrapers log file uploaded to: %s' % result)
+			log('B99Scrapers log file uploaded to: %s' % result)
 			from sys import platform as sys_platform
 			supported_platform = any(value in sys_platform for value in ('win32', 'linux2'))
 			highlight_color = 'gold'
@@ -153,16 +153,16 @@ def upload_LogFile():
 			if supported_platform: list += [('[COLOR %s]  -- Copy url To Clipboard[/COLOR]' % highlight_color, ' ')]
 			select = selectDialog([i[0] for i in list], lang(32059))
 			if 'Copy url To Clipboard' in list[select][0]:
-				from fenomscrapers.modules.source_utils import copy2clip
+				from B99scrapers.modules.source_utils import copy2clip
 				copy2clip(list[select - 1][1])
 		elif 'message' in response.json():
-			notification(message='FenomScrapers Log upload failed: %s' % str(response.json()['message']))
-			log('FenomScrapers Log upload failed: %s' % str(response.json()['message']), level=LOGERROR)
+			notification(message='B99Scrapers Log upload failed: %s' % str(response.json()['message']))
+			log('B99Scrapers Log upload failed: %s' % str(response.json()['message']), level=LOGERROR)
 		else:
-			notification(message='FenomScrapers Log upload failed')
-			log('FenomScrapers Log upload failed: %s' % response.text, level=LOGERROR)
+			notification(message='B99Scrapers Log upload failed')
+			log('B99Scrapers Log upload failed: %s' % response.text, level=LOGERROR)
 	except:
-		error('FenomScrapers log upload failed')
+		error('B99Scrapers log upload failed')
 		notification(message='pastebin post failed: See log for more info')
 
 def normalize(msg):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
 from ast import literal_eval
@@ -8,7 +8,7 @@ from hashlib import md5
 import re
 from time import time
 from sqlite3 import dbapi2 as db
-from fenomscrapers.modules.control import existsPath, dataPath, makeFile, cacheFile
+from B99scrapers.modules.control import existsPath, dataPath, makeFile, cacheFile
 
 
 def get(function, duration, *args):
@@ -40,7 +40,7 @@ def get(function, duration, *args):
 			cache_insert(key, fresh_result)
 			return literal_eval(fresh_result)
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return None
 
@@ -58,7 +58,7 @@ def cache_get(key):
 		results = dbcur.execute('''SELECT * FROM cache WHERE key=?''', (key,)).fetchone()
 		return results
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 		return None
 	finally:
@@ -75,7 +75,7 @@ def cache_insert(key, value):
 			dbcur.execute('''INSERT INTO cache Values (?, ?, ?)''', (key, value, now))
 		dbcur.connection.commit()
 	except:
-		from fenomscrapers.modules import log_utils
+		from B99scrapers.modules import log_utils
 		log_utils.error()
 	finally:
 		dbcur.close() ; dbcon.close()
@@ -110,7 +110,7 @@ def _generate_md5(*args):
 	return str(md5_hash.hexdigest())
 
 import xbmc
-from fenomscrapers.modules.control import joinPath, transPath, addonInfo, existsPath, makeFile
+from B99scrapers.modules.control import joinPath, transPath, addonInfo, existsPath, makeFile
 try: dataPath = transPath(addonInfo('profile')).decode('utf-8')
 except: dataPath = transPath(addonInfo('profile'))
 undesirablescacheFile = joinPath(dataPath, 'undesirables.db')
@@ -159,7 +159,7 @@ class Undesirables():
 	def process_keywords(self, results):
 		keywords = [i[0] for i in results.fetchall()]
 		if not keywords:
-			from fenomscrapers.modules.source_utils import UNDESIRABLES
+			from B99scrapers.modules.source_utils import UNDESIRABLES
 			keywords = UNDESIRABLES
 			self.set_defaults(keywords)
 		return keywords

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	B99scrapers Module
+	B99scrapers Modul
 """
 
 import re

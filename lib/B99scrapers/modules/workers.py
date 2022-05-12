@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
 from threading import Thread as thread

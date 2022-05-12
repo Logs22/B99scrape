@@ -1,5 +1,5 @@
 # Kodi Media Center language file
-# Addon Name: FenomScrapers
+# Addon Name: B99Scrapers
 # Addon id: script.module.ezscrapers
 # Addon Provider: Mr-Kodi
 # Translator Dutch: Tinuz97
@@ -28,8 +28,8 @@ msgid "Choose Module Scraper"
 msgstr "Kies Module Scraper"
 
 msgctxt "#32006"
-msgid "Fenomscrapers Default Providers"
-msgstr "Fenomscrapers Standaard Providers"
+msgid "B99scrapers Default Providers"
+msgstr "B99scrapers Standaard Providers"
 
 msgctxt "#32007"
 msgid "Disable All Providers"
@@ -152,8 +152,8 @@ msgid "Addon Log"
 msgstr "Addon Log"
 
 msgctxt "#32037"
-msgid "A new verison of Fenomscrapers is available from the repository. Please consider updating to v%s"
-msgstr "Een nieuwe versie van Fenomscrapers is beschikbaar in de repository. Overweeg om bij te werken naar v%s"
+msgid "A new verison of B99scrapers is available from the repository. Please consider updating to v%s"
+msgstr "Een nieuwe versie van B99scrapers is beschikbaar in de repository. Overweeg om bij te werken naar v%s"
 
 msgctxt "#32038"
 msgid "My Accounts sync complete"
@@ -224,24 +224,24 @@ msgid "Debug"
 msgstr "Debug"
 
 msgctxt "#32055"
-msgid "Write FenomScrapers log in reverse order"
-msgstr "Schrijf Fenomscrapers log in omgekeerde volgorde"
+msgid "Write B99Scrapers log in reverse order"
+msgstr "Schrijf B99scrapers log in omgekeerde volgorde"
 
 msgctxt "#32056"
-msgid "Clear FenomScrapers log file"
-msgstr "Wis het Fenomscrapers logbestand"
+msgid "Clear B99Scrapers log file"
+msgstr "Wis het B99scrapers logbestand"
 
 msgctxt "#32057"
-msgid "View FenomScrapers log File"
-msgstr "FenomScrapers logbestand bekijken"
+msgid "View B99Scrapers log File"
+msgstr "B99Scrapers logbestand bekijken"
 
 msgctxt "#32058"
-msgid "Upload FenomScrapers log file to pastebin"
-msgstr "Upload FenomScrapers logbestand naar pastebin"
+msgid "Upload B99Scrapers log file to pastebin"
+msgstr "Upload B99Scrapers logbestand naar pastebin"
 
 msgctxt "#32059"
-msgid "FenomScrapers log file uploaded to:"
-msgstr "FenomScrapers logbestand geüpload naar:"
+msgid "B99Scrapers log file uploaded to:"
+msgstr "B99Scrapers logbestand geüpload naar:"
 
 msgctxt "#32060"
 msgid "Are you sure?"

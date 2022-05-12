@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-	Fenomscrapers Module
+	B99scrapers Module
 """
 
 from sys import argv
 from urllib.parse import parse_qsl
-from fenomscrapers import sources_fenomscrapers
-from fenomscrapers.modules import control
+from B99scrapers import sources_B99scrapers
+from B99scrapers.modules import control
 
 params = dict(parse_qsl(argv[2].replace('?', '')))
 action = params.get('action')
@@ -17,23 +17,23 @@ name = params.get('name')
 if action is None:
 	control.openSettings('0.0', 'script.module.ezscrapers')
 
-if action == "FenomScrapersSettings":
+if action == "B99ScrapersSettings":
 	control.openSettings('0.0', 'script.module.ezscrapers')
 
-elif mode == "FenomScrapersSettings":
+elif mode == "B99ScrapersSettings":
 	control.openSettings('0.0', 'script.module.ezscrapers')
 
 elif action == 'ShowChangelog':
-	from fenomscrapers.modules import changelog
+	from B99scrapers.modules import changelog
 	changelog.get()
 
 elif action == 'ShowHelp':
-	from fenomscrapers.help import help
+	from B99scrapers.help import help
 	help.get(name)
 
 elif action == "Defaults":
 	sourceList = []
-	sourceList = sources_fenomscrapers.all_providers
+	sourceList = sources_B99scrapers.all_providers
 	for i in sourceList:
 		source_setting = 'provider.' + i
 		value = control.getSettingDefault(source_setting)
@@ -41,21 +41,21 @@ elif action == "Defaults":
 
 elif action == "toggleAll":
 	sourceList = []
-	sourceList = sources_fenomscrapers.all_providers
+	sourceList = sources_B99scrapers.all_providers
 	for i in sourceList:
 		source_setting = 'provider.' + i
 		control.setSetting(source_setting, params['setting'])
 
 elif action == "toggleAllHosters":
 	sourceList = []
-	sourceList = sources_fenomscrapers.hoster_providers
+	sourceList = sources_B99scrapers.hoster_providers
 	for i in sourceList:
 		source_setting = 'provider.' + i
 		control.setSetting(source_setting, params['setting'])
 
 elif action == "toggleAllTorrent":
 	sourceList = []
-	sourceList = sources_fenomscrapers.torrent_providers
+	sourceList = sources_B99scrapers.torrent_providers
 	for i in sourceList:
 		source_setting = 'provider.' + i
 		control.setSetting(source_setting, params['setting'])
@@ -64,7 +64,7 @@ elif action == "toggleAllPackTorrent":
 	control.execute('RunPlugin(plugin://script.module.ezscrapers/?action=toggleAllTorrent&amp;setting=false)')
 	control.sleep(500)
 	sourceList = []
-	from fenomscrapers import pack_sources
+	from B99scrapers import pack_sources
 	sourceList = pack_sources()
 	for i in sourceList:
 		source_setting = 'provider.' + i
@@ -91,32 +91,32 @@ elif action == 'cleanSettings':
 	control.clean_settings()
 
 elif action == 'undesirablesSelect':
-	from fenomscrapers.modules.undesirables import undesirablesSelect
+	from B99scrapers.modules.undesirables import undesirablesSelect
 	undesirablesSelect()
 
 elif action == 'undesirablesInput':
-	from fenomscrapers.modules.undesirables import undesirablesInput
+	from B99scrapers.modules.undesirables import undesirablesInput
 	undesirablesInput()
 
 elif action == 'undesirablesUserRemove':
-	from fenomscrapers.modules.undesirables import undesirablesUserRemove
+	from B99scrapers.modules.undesirables import undesirablesUserRemove
 	undesirablesUserRemove()
 
 elif action == 'undesirablesUserRemoveAll':
-	from fenomscrapers.modules.undesirables import undesirablesUserRemoveAll
+	from B99scrapers.modules.undesirables import undesirablesUserRemoveAll
 	undesirablesUserRemoveAll()
 
 elif action == 'tools_clearLogFile':
-	from fenomscrapers.modules import log_utils
+	from B99scrapers.modules import log_utils
 	cleared = log_utils.clear_logFile()
 	if cleared == 'canceled': pass
-	elif cleared: control.notification(message='FenomScrapers Log File Successfully Cleared')
-	else: control.notification(message='Error clearing FenomScrapers Log File, see kodi.log for more info')
+	elif cleared: control.notification(message='B99Scrapers Log File Successfully Cleared')
+	else: control.notification(message='Error clearing B99Scrapers Log File, see kodi.log for more info')
 
 elif action == 'tools_viewLogFile':
-	from fenomscrapers.modules import log_utils
+	from B99scrapers.modules import log_utils
 	log_utils.view_LogFile(name)
 
 elif action == 'tools_uploadLogFile':
-	from fenomscrapers.modules import log_utils
+	from B99scrapers.modules import log_utils
 	log_utils.upload_LogFile()
