@@ -3,7 +3,7 @@
 	B99scrapers Module
 """
 import sqlite3 as db
-from B99scrapers.modules.contro import existsPath, dataPath, makeFile, undesirablescacheFile, lang
+from B99scrapers.modules.control import existsPath, dataPath, makeFile, undesirablescacheFile, lang
 
 class Undesirables():
 	def get_enabled(self):
