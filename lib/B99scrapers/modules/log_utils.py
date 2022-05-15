@@ -71,7 +71,7 @@ def error(message=None, exception=True):
 		import sys
 		if exception:
 			type, value, traceback = sys.exc_info()
-			addon = 'script.module.ezscrapers'
+			addon = 'script.module.B99scrapers'
 			filename = (traceback.tb_frame.f_code.co_filename)
 			filename = filename.split(addon)[1]
 			name = traceback.tb_frame.f_code.co_name

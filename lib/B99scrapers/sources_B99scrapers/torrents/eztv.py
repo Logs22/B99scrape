@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-# modified by Venom for Fenomscrapers (updated 3-30-2022)
+# modified by Venom for B99scrapers (updated 3-30-2022)
 """
-	Fenomscrapers Project
+	B99scrapers Project
 """
 
 import re
 from urllib.parse import quote_plus, unquote_plus
-from fenomscrapers.modules import client
-from fenomscrapers.modules import source_utils
+from B99scrapers.modules import client
+from B99scrapers.modules import source_utils
 
 
 class source:
@@ -60,7 +60,7 @@ class source:
 				url = unquote_plus(client.replaceHTMLCodes(link[0])).split('&tr')[0]
 				hash = re.search(r'btih:(.*?)(?:&|$)', url, re.I).group(1)
 				if len(hash) != 40: # eztv has some base32 encoded hashes
-					from fenomscrapers.modules import log_utils
+					from B99scrapers.modules import log_utils
 					hash = source_utils.base32_to_hex(hash, 'EZTV')
 					log_utils.log('url with base32 hash:  "%s" ' % url, __name__, log_utils.LOGDEBUG)
 					url = re.sub(re.search(r'btih:(.*?)(?:&|$)', url).group(1), hash, url)
@@ -129,7 +129,7 @@ class source:
 				url = unquote_plus(client.replaceHTMLCodes(link[0])).split('&tr')[0]
 				hash = re.search(r'btih:(.*?)(?:&|$)', url, re.I).group(1)
 				if len(hash) != 40: # eztv has some base32 encoded hashes
-					from fenomscrapers.modules import log_utils
+					from B99scrapers.modules import log_utils
 					hash = source_utils.base32_to_hex(hash, 'EZTV')
 					log_utils.log('url with base32 hash:  "%s" ' % url, __name__, log_utils.LOGDEBUG)
 					url = re.sub(re.search(r'btih:(.*?)(?:&|$)', url).group(1), hash, url)

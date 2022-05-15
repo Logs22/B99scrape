@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-# modified by Venom for Fenomscrapers (updated 3-30-2022)
+# modified by Venom for B99scrapers (updated 3-30-2022)
 """
-	Fenomscrapers Project
+	B99scrapers Project
 """
 
 import re
 from urllib.parse import quote_plus
-from fenomscrapers.modules import cfscrape
-from fenomscrapers.modules import client
-from fenomscrapers.modules import source_utils
-from fenomscrapers.modules import workers
+from B99scrapers.modules import cfscrape
+from B99scrapers.modules import client
+from B99scrapers.modules import source_utils
+from B99scrapers.modules import workers
 
 
 class source:
@@ -67,7 +67,7 @@ class source:
 		try:
 			results = self.scraper.get(link, timeout=10).text
 			if '503 Service Temporarily Unavailable' in results:
-				from fenomscrapers.modules import log_utils
+				from B99scrapers.modules import log_utils
 				log_utils.log('LIMETORRENTS (Single request failure): 503 Service Temporarily Unavailable')
 				return
 			if not results or '<table' not in results: return
@@ -159,7 +159,7 @@ class source:
 		try:
 			results = self.scraper.get(link, timeout=10).text
 			if '503 Service Temporarily Unavailable' in results:
-				from fenomscrapers.modules import log_utils
+				from B99scrapers.modules import log_utils
 				req_type = 'SHOW' if self.search_series else 'SEASON'
 				log_utils.log('LIMETORRENTS (%s Pack request failure): 503 Service Temporarily Unavailable' % req_type)
 				return

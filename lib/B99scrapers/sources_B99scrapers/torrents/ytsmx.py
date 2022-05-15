@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-# created by Venom for Fenomscrapers (updated 12-16-2021)
+# created by Venom for B99scrapers (updated 12-16-2021)
 """
-	Fenomscrapers Project
+	B99scrapers Project
 """
 
 from json import loads as jsloads
 import re
-from fenomscrapers.modules import client
-from fenomscrapers.modules import source_utils
+from B99scrapers.modules import client
+from B99scrapers.modules import source_utils
 
 
 class source:

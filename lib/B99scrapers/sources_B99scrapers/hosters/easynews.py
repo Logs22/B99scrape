@@ -1,15 +1,15 @@
 # -*- coding: UTF-8 -*-
 # (updated 01-02-2022)
 '''
-	Fenomscrapers Project
+	B99scrapers Project
 '''
 
 from base64 import b64encode
 import re
 import requests
 from urllib.parse import quote
-from fenomscrapers.modules.control import setting as getSetting
-from fenomscrapers.modules import source_utils
+from B99scrapers.modules.control import setting as getSetting
+from B99scrapers.modules import source_utils
 
 SORT = {'s1': 'relevance', 's1d': '-', 's2': 'dsize', 's2d': '-', 's3': 'dtime', 's3d': '-'}
 SEARCH_PARAMS = {'st': 'adv', 'sb': 1, 'fex': 'm4v,3gp,mov,divx,xvid,wmv,avi,mpg,mpeg,mp4,mkv,avc,flv,webm', 'fty[]': 'VIDEO', 'spamf': 1, 'u': '1', 'gx': 1, 'pno': 1, 'sS': 3}

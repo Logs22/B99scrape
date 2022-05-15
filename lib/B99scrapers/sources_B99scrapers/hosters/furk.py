@@ -1,14 +1,14 @@
 # -*- coding: UTF-8 -*-
 # (updated 01-02-2022) increased timeout=20
 '''
-	Fenomscrapers Project
+	B99scrapers Project
 '''
 
 from json import dumps as jsdumps, loads as jsloads
 import requests
-from fenomscrapers.modules.control import setting as getSetting, setSetting
-from fenomscrapers.modules import cleantitle
-from fenomscrapers.modules import source_utils
+from B99scrapers.modules.control import setting as getSetting, setSetting
+from B99scrapers.modules import cleantitle
+from B99scrapers.modules import source_utils
 
 
 class source:

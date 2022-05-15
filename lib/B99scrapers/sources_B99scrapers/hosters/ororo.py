@@ -1,17 +1,17 @@
 # -*- coding: UTF-8 -*-
 # (updated 01-02-2022)
 '''
-	Fenomscrapers Project
+	B99scrapers Project
 '''
 
 from base64 import b64encode
 from json import loads as jsloads
 import re
 from urllib.parse import urljoin
-from fenomscrapers.modules import cache
-from fenomscrapers.modules import client
-from fenomscrapers.modules.control import setting as getSetting
-from fenomscrapers.modules import source_utils
+from B99scrapers.modules import cache
+from B99scrapers.modules import client
+from B99scrapers.modules.control import setting as getSetting
+from B99scrapers.modules import source_utils
 
 
 class source:

@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 # (updated 12-14-2021)
 '''
-	Fenomscrapers Project
+	B99scrapers Project
 '''
 
 import re
 import requests
 from urllib.parse import unquote, quote_plus
-from fenomscrapers.modules.control import setting as getSetting
-from fenomscrapers.modules import source_utils
+from B99scrapers.modules.control import setting as getSetting
+from B99scrapers.modules import source_utils
 
 cloudflare_worker_url = getSetting('gdrive.cloudflare_url').strip()
 

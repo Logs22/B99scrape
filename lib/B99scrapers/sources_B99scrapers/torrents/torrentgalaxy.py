@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-# created by Venom for Fenomscrapers (updated 4-05-2022)
+# created by Venom for B99scrapers (updated 4-05-2022)
 """
-	Fenomscrapers Project
+	B99scrapers Project
 """
 
 import re
 from urllib.parse import quote_plus, unquote_plus
-from fenomscrapers.modules import cfscrape
-from fenomscrapers.modules import client
-from fenomscrapers.modules import source_utils
-from fenomscrapers.modules import workers
+from B99scrapers.modules import cfscrape
+from B99scrapers.modules import client
+from B99scrapers.modules import source_utils
+from B99scrapers.modules import workers
 
 
 class source:

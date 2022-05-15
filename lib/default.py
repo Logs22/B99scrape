@@ -15,13 +15,13 @@ query = params.get('query')
 name = params.get('name')
 
 if action is None:
-	control.openSettings('0.0', 'script.module.ezscrapers')
+	control.openSettings('0.0', 'script.module.B99scrapers')
 
 if action == "B99ScrapersSettings":
-	control.openSettings('0.0', 'script.module.ezscrapers')
+	control.openSettings('0.0', 'script.module.B99scrapers')
 
 elif mode == "B99ScrapersSettings":
-	control.openSettings('0.0', 'script.module.ezscrapers')
+	control.openSettings('0.0', 'script.module.B99scrapers')
 
 elif action == 'ShowChangelog':
 	from B99scrapers.modules import changelog
@@ -61,7 +61,7 @@ elif action == "toggleAllTorrent":
 		control.setSetting(source_setting, params['setting'])
 
 elif action == "toggleAllPackTorrent":
-	control.execute('RunPlugin(plugin://script.module.ezscrapers/?action=toggleAllTorrent&amp;setting=false)')
+	control.execute('RunPlugin(plugin://script.module.B99scrapers/?action=toggleAllTorrent&amp;setting=false)')
 	control.sleep(500)
 	sourceList = []
 	from B99scrapers import pack_sources
@@ -80,12 +80,12 @@ elif action == 'openMyAccount':
 	control.syncMyAccounts()
 	control.sleep(100)
 	if params.get('opensettings') == 'true':
-		control.openSettings(query, 'script.module.ezscrapers')
+		control.openSettings(query, 'script.module.B99scrapers')
 
 elif action == 'syncMyAccount':
 	control.syncMyAccounts()
 	if params.get('opensettings') == 'true':
-		control.openSettings(query, 'script.module.ezscrapers')
+		control.openSettings(query, 'script.module.B99scrapers')
 
 elif action == 'cleanSettings':
 	control.clean_settings()

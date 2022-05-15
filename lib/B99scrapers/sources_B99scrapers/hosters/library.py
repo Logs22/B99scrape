@@ -1,15 +1,15 @@
 # -*- coding: UTF-8 -*-
-# modified by Venom for Fenomscrapers (updated 12-14-2021)
+# modified by Venom for B99scrapers (updated 12-14-2021)
 '''
-	Fenomscrapers Project
+	B99scrapers Project
 '''
 
 from json import loads as jsloads
 import os.path
 from xbmc import executeJSONRPC as jsonrpc
 from xbmcvfs import File as openFile
-from fenomscrapers.modules import cleantitle
-from fenomscrapers.modules import source_utils
+from B99scrapers.modules import cleantitle
+from B99scrapers.modules import source_utils
 
 
 class source:
